@@ -1,6 +1,7 @@
 plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
+    id 'com.google.devtools.ksp'
 }
 
 android {
@@ -41,6 +42,10 @@ dependencies {
     // Added Coroutines + Lifecycle APIs
     implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.5.2'
     implementation 'androidx.lifecycle:lifecycle-runtime-ktx:2.4.0'
+    implementation 'com.squareup.moshi:moshi:1.13.0'
+
+    // Moshi dependencies
+    ksp 'com.squareup.moshi:moshi-kotlin-codegen:1.13.0'
 
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.3'
