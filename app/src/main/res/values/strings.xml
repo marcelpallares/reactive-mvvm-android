@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Reactive MVVM with Flows</string>
+    <string name="quote_btn">Get new quote</string>
+    <string name="share_btn">Share</string>
 </resources>
