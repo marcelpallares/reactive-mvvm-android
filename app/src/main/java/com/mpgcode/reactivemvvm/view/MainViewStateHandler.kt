@@ -5,8 +5,8 @@ import com.mpgcode.reactivemvvm.view.MainViewState.VisibilityState
 
 class MainViewStateHandler {
     fun handleInitialState() = MainViewState(
-        author = "...",
-        quote = "...",
+        author = "Fetching author...",
+        quote = "Fetching quote...",
         spinnerVisibility = VisibilityState.GONE,
         isQuoteButtonEnabled = true
     )
