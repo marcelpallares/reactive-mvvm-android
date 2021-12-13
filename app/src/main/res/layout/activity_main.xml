@@ -21,7 +21,7 @@
         app:layout_constraintBottom_toTopOf="@id/quoteBtn"
         app:layout_constraintVertical_chainStyle="packed">
 
-        <TextView
+        <com.google.android.material.textview.MaterialTextView
             android:id="@+id/author"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -29,11 +29,13 @@
             android:textSize="14sp"
             tools:text="Yoda" />
 
-        <TextView
+        <com.google.android.material.textview.MaterialTextView
             android:id="@+id/quote"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
             android:textSize="18sp"
+            android:lineSpacingExtra="2dp"
             tools:text="Do or do not, there is no try." />
     </LinearLayout>
 
