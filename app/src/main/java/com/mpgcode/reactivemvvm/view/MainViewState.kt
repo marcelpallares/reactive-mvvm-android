@@ -6,7 +6,7 @@ data class MainViewState(
     val author: String,
     val quote: String,
     val spinnerVisibility: VisibilityState,
-    val isQuoteButtonEnabled: Boolean) {
+    val isButtonEnabled: Boolean) {
 
     enum class VisibilityState(val value: Int) {
         VISIBLE(View.VISIBLE),

@@ -5,6 +5,7 @@ import android.os.Bundle
 import androidx.lifecycle.flowWithLifecycle
 import androidx.lifecycle.lifecycleScope
 import com.mpgcode.reactivemvvm.databinding.ActivityMainBinding
+import com.mpgcode.reactivemvvm.view.utils.shareText
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.flow.collect
 
@@ -24,7 +25,10 @@ class MainActivity : AppCompatActivity() {
 
     private fun setupUI() = with(binding) {
         quoteBtn.setOnClickListener { viewModel.emitAction(MainViewAction.QuoteButtonClick) }
-        shareBtn.setOnClickListener { viewModel.emitAction(MainViewAction.ShareButtonClick) }
+        shareBtn.setOnClickListener { viewModel.emitAction(MainViewAction.ShareButtonClick(
+            author = author.text.toString(),
+            quote = quote.text.toString()
+        )) }
     }
 
     private fun listenToViewModel() {
@@ -32,12 +36,22 @@ class MainActivity : AppCompatActivity() {
             // Don't forget to import kotlinx.coroutines.flow.collect
             viewModel.state.flowWithLifecycle(lifecycle).collect { render(it) }
         }
+        lifecycleScope.launch {
+            viewModel.viewEvents.flowWithLifecycle(lifecycle).collect { handleEvent(it) }
+        }
     }
 
     private fun render(state: MainViewState) = with(binding) {
         author.text = state.author
         quote.text = state.quote
-        quoteBtn.isEnabled = state.isQuoteButtonEnabled
+        quoteBtn.isEnabled = state.isButtonEnabled
+        shareBtn.isEnabled = state.isButtonEnabled
         spinner.visibility = state.spinnerVisibility.value
+    }
+
+    private fun handleEvent(event: MainViewEvent) {
+        when (event) {
+            is MainViewEvent.Share -> shareText(event.text)
+        }
     }
 }

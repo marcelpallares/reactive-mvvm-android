@@ -11,10 +11,8 @@ class GetQuoteInteractor(
     private val repository: QuotesRepository = QuotesRepository(context),
     private val loadingIntervalMs: Long = 3000
 ) {
-    suspend fun getQuote(): Quote {
-        return withContext(ioDispatcher) {
-            delay(loadingIntervalMs) // Wait to emulate a real network connection delay
-            repository.getQuotesFromAssets().random()
-        }
+    suspend fun getQuote(): Quote = withContext(ioDispatcher) {
+        delay(loadingIntervalMs) // Wait to emulate a real network connection delay
+        repository.getQuotesFromAssets().random()
     }
 }

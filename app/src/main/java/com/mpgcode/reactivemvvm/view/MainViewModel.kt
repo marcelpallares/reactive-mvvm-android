@@ -4,10 +4,8 @@ import android.content.Context
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.mpgcode.reactivemvvm.data.interactors.GetQuoteInteractor
-import kotlinx.coroutines.flow.MutableSharedFlow
-import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.asStateFlow
-import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.channels.Channel
+import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.launch
 
 class MainViewModel(
@@ -16,10 +14,12 @@ class MainViewModel(
     private val stateHandler: MainViewStateHandler = MainViewStateHandler()
 ) : ViewModel() {
     private val viewActions = MutableSharedFlow<MainViewAction>()
+    private val viewEventsChannel = Channel<MainViewEvent>(Channel.BUFFERED)
     private val mutableState: MutableStateFlow<MainViewState> =
         MutableStateFlow(stateHandler.handleInitialState())
 
     val state = mutableState.asStateFlow()
+    val viewEvents = viewEventsChannel.receiveAsFlow()
 
     init {
         listenToViewActions()
@@ -37,7 +37,7 @@ class MainViewModel(
     private fun handleAction(action: MainViewAction) {
         when (action) {
             MainViewAction.QuoteButtonClick -> fetchNewQuote()
-            MainViewAction.ShareButtonClick -> Unit
+            is MainViewAction.ShareButtonClick -> shareQuote(action.author, action.quote)
         }
     }
 
@@ -49,7 +49,19 @@ class MainViewModel(
         }
     }
 
+    private fun shareQuote(author: String, quote: String) {
+        emitViewEvent(
+            MainViewEvent.Share(
+                text = "$author: $quote"
+            )
+        )
+    }
+
     private fun emitState(state: MainViewState) {
         mutableState.value = state
+    }
+
+    private  fun emitViewEvent(event: MainViewEvent) = viewModelScope.launch {
+        viewEventsChannel.send(event)
     }
 }

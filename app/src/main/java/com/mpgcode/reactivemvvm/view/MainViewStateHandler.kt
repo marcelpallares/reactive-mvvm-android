@@ -8,14 +8,14 @@ class MainViewStateHandler {
         author = "Fetching author...",
         quote = "Fetching quote...",
         spinnerVisibility = VisibilityState.GONE,
-        isQuoteButtonEnabled = true
+        isButtonEnabled = true
     )
 
     fun handleLoadingState(
         currentState: MainViewState
     ) = currentState.copy(
         spinnerVisibility = VisibilityState.VISIBLE,
-        isQuoteButtonEnabled = false
+        isButtonEnabled = false
     )
 
     fun handleSuccess(
@@ -24,6 +24,6 @@ class MainViewStateHandler {
         author = quote.author,
         quote = quote.content,
         spinnerVisibility = VisibilityState.GONE,
-        isQuoteButtonEnabled = true
+        isButtonEnabled = true
     )
 }
