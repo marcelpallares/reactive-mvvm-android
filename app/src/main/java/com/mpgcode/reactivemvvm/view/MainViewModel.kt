@@ -12,13 +12,25 @@ class MainViewModel(
     private val interactor: GetQuoteInteractor = GetQuoteInteractor(context),
     private val stateHandler: MainViewStateHandler = MainViewStateHandler()
 ): ViewModel() {
+    private val viewActions = MutableSharedFlow<MainViewAction>()
     private val mutableState: MutableStateFlow<MainViewState> =
         MutableStateFlow(stateHandler.handleInitialState())
 
     val state = mutableState.asStateFlow()
 
     init {
+        listenToViewActions()
         fetchNewQuote()
+    }
+
+    fun emitAction(viewAction: MainViewAction) {
+        viewModelScope.launch { viewActions.emit(viewAction) }
+    }
+
+    private fun handleAction(action: MainViewAction) {
+        when (action) {
+            MainViewAction.QuoteButtonClick -> fetchNewQuote()
+        }
     }
 
     private fun fetchNewQuote() {
@@ -26,6 +38,10 @@ class MainViewModel(
             val quote = interactor.getQuote()
             emitState(stateHandler.handleSuccess(quote))
         }
+    }
+
+    private fun listenToViewActions() = viewModelScope.launch {
+        viewActions.collect { handleAction(it) }
     }
 
     private fun emitState(state: MainViewState) {
