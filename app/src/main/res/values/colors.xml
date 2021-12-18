@@ -7,8 +7,10 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="dark">#363636</color>
 
-    <color name="primaryText">#363636</color>
-    <color name="cardBg">#19000000</color>
-    <color name="btnBg">@color/purple_500</color>
+    <color name="primary_text">@color/dark</color>
+    <color name="card_bg">#19000000</color>
+    <color name="button_bg">@color/purple_500</color>
+    <color name="share_tint">@color/white</color>
 </resources>
