@@ -6,8 +6,8 @@ import androidx.lifecycle.flowWithLifecycle
 import androidx.lifecycle.lifecycleScope
 import com.mpgcode.reactivemvvm.databinding.ActivityMainBinding
 import com.mpgcode.reactivemvvm.view.utils.shareText
-import kotlinx.coroutines.launch
 import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.launch
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding

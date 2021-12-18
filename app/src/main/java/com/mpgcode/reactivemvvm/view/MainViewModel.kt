@@ -12,7 +12,7 @@ class MainViewModel(
     context: Context,
     private val interactor: GetQuoteInteractor = GetQuoteInteractor(context),
     private val stateHandler: MainViewStateHandler = MainViewStateHandler()
-) : ViewModel() {
+): ViewModel() {
     private val viewActions = MutableSharedFlow<MainViewAction>()
     private val viewEventsChannel = Channel<MainViewEvent>(Channel.BUFFERED)
     private val mutableState: MutableStateFlow<MainViewState> =
