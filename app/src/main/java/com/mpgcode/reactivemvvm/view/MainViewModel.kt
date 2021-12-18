@@ -30,6 +30,7 @@ class MainViewModel(
     private fun handleAction(action: MainViewAction) {
         when (action) {
             MainViewAction.QuoteButtonClick -> fetchNewQuote()
+            is MainViewAction.ShareButtonClick -> { }
         }
     }
 
