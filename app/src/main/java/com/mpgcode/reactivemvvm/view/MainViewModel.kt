@@ -9,15 +9,11 @@ import kotlinx.coroutines.launch
 
 class MainViewModel(
     context: Context,
-    private val interactor: GetQuoteInteractor = GetQuoteInteractor(context)
+    private val interactor: GetQuoteInteractor = GetQuoteInteractor(context),
+    private val stateHandler: MainViewStateHandler = MainViewStateHandler()
 ): ViewModel() {
     private val mutableState: MutableStateFlow<MainViewState> =
-        MutableStateFlow(MainViewState(
-            author = "Fetching author...",
-            quote = "Fetching quote...",
-            spinnerVisibility = MainViewState.VisibilityState.VISIBLE,
-            isButtonEnabled = false
-        ))
+        MutableStateFlow(stateHandler.handleInitialState())
 
     val state = mutableState.asStateFlow()
 
@@ -28,12 +24,7 @@ class MainViewModel(
     private fun fetchNewQuote() {
         viewModelScope.launch {
             val quote = interactor.getQuote()
-            emitState(MainViewState(
-                author = quote.author,
-                quote = quote.content,
-                spinnerVisibility = MainViewState.VisibilityState.GONE,
-                isButtonEnabled = true
-            ))
+            emitState(stateHandler.handleSuccess(quote))
         }
     }
 
