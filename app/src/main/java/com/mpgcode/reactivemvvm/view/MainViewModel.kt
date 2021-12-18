@@ -30,10 +30,6 @@ class MainViewModel(
         viewModelScope.launch { viewActions.emit(viewAction) }
     }
 
-    private fun listenToViewActions() = viewModelScope.launch {
-        viewActions.collect { handleAction(it) }
-    }
-
     private fun handleAction(action: MainViewAction) {
         when (action) {
             MainViewAction.QuoteButtonClick -> fetchNewQuote()
@@ -51,10 +47,12 @@ class MainViewModel(
 
     private fun shareQuote(author: String, quote: String) {
         emitViewEvent(
-            MainViewEvent.Share(
-                text = "$author: $quote"
-            )
+            MainViewEvent.Share("$author: $quote")
         )
+    }
+
+    private fun listenToViewActions() = viewModelScope.launch {
+        viewActions.collect { handleAction(it) }
     }
 
     private fun emitState(state: MainViewState) {
