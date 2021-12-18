@@ -30,10 +30,12 @@ android {
     kotlinOptions {
         jvmTarget = '1.8'
     }
+    buildFeatures {
+        viewBinding true
+    }
 }
 
 dependencies {
-
     implementation 'androidx.core:core-ktx:1.7.0'
     implementation 'androidx.appcompat:appcompat:1.4.0'
     implementation 'com.google.android.material:material:1.4.0'
@@ -42,9 +44,10 @@ dependencies {
     // Added Coroutines + Lifecycle APIs
     implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.5.2'
     implementation 'androidx.lifecycle:lifecycle-runtime-ktx:2.4.0'
-    implementation 'com.squareup.moshi:moshi:1.13.0'
+    implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.4.0'
 
-    // Moshi dependencies
+    // Json dependencies
+    implementation 'com.squareup.moshi:moshi:1.13.0'
     ksp 'com.squareup.moshi:moshi-kotlin-codegen:1.13.0'
 
     testImplementation 'junit:junit:4.13.2'
