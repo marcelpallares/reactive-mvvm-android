@@ -35,6 +35,7 @@ class MainViewModel(
 
     private fun fetchNewQuote() {
         viewModelScope.launch {
+            emitState(stateHandler.handleLoadingState(state.value))
             val quote = interactor.getQuote()
             emitState(stateHandler.handleSuccess(quote))
         }

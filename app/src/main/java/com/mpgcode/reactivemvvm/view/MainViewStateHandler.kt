@@ -7,6 +7,13 @@ class MainViewStateHandler {
     fun handleInitialState() = MainViewState(
         author = "Fetching author...",
         quote = "Fetching quote...",
+        spinnerVisibility = VisibilityState.GONE,
+        isButtonEnabled = true
+    )
+
+    fun handleLoadingState(
+        currentState: MainViewState
+    ) = currentState.copy(
         spinnerVisibility = VisibilityState.VISIBLE,
         isButtonEnabled = false
     )
