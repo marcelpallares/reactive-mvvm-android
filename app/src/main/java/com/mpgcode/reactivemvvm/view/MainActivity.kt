@@ -1,4 +1,4 @@
-package com.mpgcode.reactivemvvm
+package com.mpgcode.reactivemvvm.view
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
