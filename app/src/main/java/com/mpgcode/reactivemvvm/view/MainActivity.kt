@@ -5,6 +5,7 @@ import android.os.Bundle
 import androidx.lifecycle.flowWithLifecycle
 import androidx.lifecycle.lifecycleScope
 import com.mpgcode.reactivemvvm.databinding.ActivityMainBinding
+import com.mpgcode.reactivemvvm.view.utils.shareText
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 
@@ -35,6 +36,9 @@ class MainActivity : AppCompatActivity() {
             // Don't forget to import kotlinx.coroutines.flow.collect
             viewModel.state.flowWithLifecycle(lifecycle).collect { render(it) }
         }
+        lifecycleScope.launch {
+            viewModel.viewEvents.flowWithLifecycle(lifecycle).collect { handleEvent(it) }
+        }
     }
 
     private fun render(state: MainViewState) = with(binding) {
@@ -43,5 +47,11 @@ class MainActivity : AppCompatActivity() {
         quoteBtn.isEnabled = state.isButtonEnabled
         shareBtn.isEnabled = state.isButtonEnabled
         spinner.visibility = state.spinnerVisibility.value
+    }
+
+    private fun handleEvent(event: MainViewEvent) {
+        when (event) {
+            is MainViewEvent.Share -> shareText(event.text)
+        }
     }
 }
