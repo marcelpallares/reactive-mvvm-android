@@ -13,6 +13,7 @@ This MVVM implementation orchestrates the whole app functionality through the ne
 
 The app follows a unidirectional data flow paradigm like MVI but leaves out complexities such as reducers or processors.
 
+![MVVM UDF](mvvm_diagram.png)
 
 ## The app - Your Daily Quote 💬
 
