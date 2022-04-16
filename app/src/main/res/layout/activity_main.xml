@@ -4,17 +4,17 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    android:background="?backgroundColor"
+    tools:context=".view.MainActivity">
 
     <TextView
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
-        android:fontFamily="sans-serif-black"
         android:gravity="center"
         android:text="@string/title"
-        android:textColor="@color/primary_text"
         android:textSize="24sp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@id/card"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
@@ -34,15 +34,16 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_chainStyle="packed">
 
-        <com.google.android.material.textview.MaterialTextView
+        <TextView
             android:id="@+id/author"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:textColor="?attr/textSecondaryColor"
             android:textSize="14sp"
             android:textStyle="bold"
             tools:text="Yoda" />
 
-        <com.google.android.material.textview.MaterialTextView
+        <TextView
             android:id="@+id/quote"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -54,7 +55,7 @@
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/quoteBtn"
-        style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+        style="?materialButtonOutlinedStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/quote_btn"
@@ -71,7 +72,6 @@
         android:textSize="12sp"
         app:elevation="0dp"
         app:icon="@drawable/ic_share"
-        app:iconTint="@color/share_tint"
         app:layout_constraintEnd_toEndOf="@id/card"
         app:layout_constraintTop_toTopOf="@id/quoteBtn" />
 
