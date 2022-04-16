@@ -1,16 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="purple_200">#FFBB86FC</color>
-    <color name="purple_500">#FF6200EE</color>
-    <color name="purple_700">#FF3700B3</color>
-    <color name="teal_200">#FF03DAC5</color>
-    <color name="teal_700">#FF018786</color>
-    <color name="black">#FF000000</color>
-    <color name="white">#FFFFFFFF</color>
-    <color name="dark">#363636</color>
+    <attr name="textPrimaryColor" format="color" />
+    <attr name="textSecondaryColor" format="color" />
+    <attr name="buttonTextPrimaryColor" format="color" />
+    <attr name="buttonTextOutlineColor" format="color" />
+    <attr name="backgroundSecondaryColor" format="color" />
 
-    <color name="primary_text">@color/dark</color>
-    <color name="card_bg">#19000000</color>
-    <color name="button_bg">@color/purple_500</color>
-    <color name="share_tint">@color/white</color>
+    <color name="white">#FFFFFF</color>
+    <color name="white_70">#B3FFFFFF</color>
+    <color name="white_10">#1AFFFFFF</color>
+    <color name="black">#2C2C2C</color>
+    <color name="black_85">#D92C2C2C</color>
+    <color name="black_70">#B32C2C2C</color>
+    <color name="black_55">#8C2C2C2C</color>
+    <color name="black_40">#662C2C2C</color>
+    <color name="black_30">#4D2C2C2C</color>
+    <color name="black_20">#332C2C2C</color>
+    <color name="black_10">#1A2C2C2C</color>
+
+    <color name="red_500">#E52255</color>
+    <color name="red_600">#C12152</color>
+    <color name="red_700">#871B47</color>
+    <color name="red_800">#631639</color>
 </resources>
