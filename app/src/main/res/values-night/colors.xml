@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<resources>
-    <color name="primary_text">@color/white</color>
-    <color name="card_bg">#19FFFFFF</color>
-    <color name="button_bg">@color/purple_200</color>
-    <color name="share_tint">@color/black</color>
-</resources>
