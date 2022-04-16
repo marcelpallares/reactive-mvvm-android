@@ -1,16 +1,35 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
-    <!-- Base application theme. -->
-    <style name="Theme.ReactiveMVVMWithFlows" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
-        <!-- Primary brand color. -->
-        <item name="colorPrimary">@color/purple_500</item>
-        <item name="colorPrimaryVariant">@color/purple_700</item>
+    <style name="Theme.MPGCode.Base" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
+        <!-- Brand color -->
+        <item name="colorPrimary">@color/red_500</item>
+        <item name="colorPrimaryVariant">@color/red_600</item>
+        <item name="colorSecondary">?colorPrimary</item>
+        <item name="colorSecondaryVariant">?colorPrimaryVariant</item>
+        <item name="colorSurface">?colorPrimary</item>
         <item name="colorOnPrimary">@color/white</item>
-        <!-- Secondary brand color. -->
-        <item name="colorSecondary">@color/teal_200</item>
-        <item name="colorSecondaryVariant">@color/teal_700</item>
-        <item name="colorOnSecondary">@color/black</item>
-        <!-- Status bar color. -->
-        <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
-        <!-- Customize your theme here. -->
+        <item name="colorOnSurface">@color/white</item>
+
+        <item name="backgroundColor">@color/white</item>
+        <item name="textPrimaryColor">@color/black</item>
+        <item name="textSecondaryColor">@color/black_70</item>
+        <item name="buttonTextPrimaryColor">@color/white</item>
+        <item name="buttonTextOutlineColor">?colorPrimaryVariant</item>
+        <item name="backgroundSecondaryColor">@color/black_10</item>
+
+        <!-- Text -->
+        <item name="android:textColor">?attr/textPrimaryColor</item>
+
+        <!-- Status + navigation color -->
+        <item name="android:statusBarColor" tools:targetApi="l">@color/red_700</item>
+        <item name="android:navigationBarColor" tools:targetApi="o_mr1">?backgroundColor</item>
+        <item name="android:windowLightNavigationBar" tools:targetApi="o_mr1">true</item>
+
+        <!-- Buttons -->
+        <item name="materialButtonStyle">@style/Widget.App.Button</item>
+        <item name="borderlessButtonStyle">@style/Widget.App.Button.TextButton</item>
+        <item name="materialButtonOutlinedStyle">@style/Widget.App.Button.OutlinedButton</item>
     </style>
+
+    <!-- Base application theme. -->
+    <style name="Theme.MPGCode" parent="Theme.MPGCode.Base" />
 </resources>
