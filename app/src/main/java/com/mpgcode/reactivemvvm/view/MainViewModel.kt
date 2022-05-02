@@ -13,7 +13,6 @@ class MainViewModel(
     private val interactor: GetQuoteInteractor = GetQuoteInteractor(context),
     private val stateHandler: MainViewStateHandler = MainViewStateHandler()
 ): ViewModel() {
-    private val viewActions = MutableSharedFlow<MainViewAction>()
     private val viewEventsChannel = Channel<MainViewEvent>(Channel.BUFFERED)
     private val mutableState: MutableStateFlow<MainViewState> =
         MutableStateFlow(stateHandler.handleInitialState())
@@ -22,18 +21,13 @@ class MainViewModel(
     val viewEvents = viewEventsChannel.receiveAsFlow()
 
     init {
-        listenToViewActions()
         fetchNewQuote()
     }
 
     fun emitAction(viewAction: MainViewAction) {
-        viewModelScope.launch { viewActions.emit(viewAction) }
-    }
-
-    private fun handleAction(action: MainViewAction) {
-        when (action) {
+        when (viewAction) {
             MainViewAction.QuoteButtonClick -> fetchNewQuote()
-            is MainViewAction.ShareButtonClick -> shareQuote(action.author, action.quote)
+            is MainViewAction.ShareButtonClick -> shareQuote(viewAction.author, viewAction.quote)
         }
     }
 
@@ -45,14 +39,11 @@ class MainViewModel(
         }
     }
 
+
     private fun shareQuote(author: String, quote: String) {
         emitViewEvent(
             MainViewEvent.Share("$author: $quote")
         )
-    }
-
-    private fun listenToViewActions() = viewModelScope.launch {
-        viewActions.collect { handleAction(it) }
     }
 
     private fun emitState(state: MainViewState) {
