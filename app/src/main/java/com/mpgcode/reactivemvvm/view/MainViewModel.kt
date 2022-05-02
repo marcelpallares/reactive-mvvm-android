@@ -24,10 +24,10 @@ class MainViewModel(
         fetchNewQuote()
     }
 
-    fun emitAction(viewAction: MainViewAction) {
-        when (viewAction) {
-            MainViewAction.QuoteButtonClick -> fetchNewQuote()
-            is MainViewAction.ShareButtonClick -> shareQuote(viewAction.author, viewAction.quote)
+    fun emitAction(action: MainViewAction) {
+        when (action) {
+            QuoteButtonClick -> fetchNewQuote()
+            is ShareButtonClick -> shareQuote(action.author, action.quote)
         }
     }
 
