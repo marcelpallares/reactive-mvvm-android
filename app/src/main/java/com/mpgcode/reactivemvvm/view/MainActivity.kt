@@ -25,10 +25,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun setupUI() = with(binding) {
         quoteBtn.setOnClickListener { viewModel.emitAction(QuoteButtonClick) }
-        shareBtn.setOnClickListener { viewModel.emitAction(ShareButtonClick(
-            author = author.text.toString(),
-            quote = quote.text.toString()
-        )) }
+        shareBtn.setOnClickListener { viewModel.emitAction(ShareButtonClick) }
     }
 
     private fun listenToViewModel() {

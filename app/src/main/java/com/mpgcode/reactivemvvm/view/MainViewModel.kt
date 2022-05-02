@@ -27,7 +27,7 @@ class MainViewModel(
     fun emitAction(action: MainViewAction) {
         when (action) {
             QuoteButtonClick -> fetchNewQuote()
-            is ShareButtonClick -> shareQuote(action.author, action.quote)
+            ShareButtonClick -> shareQuote(state.value.author, state.value.quote)
         }
     }
 
@@ -38,7 +38,6 @@ class MainViewModel(
             emitState(stateHandler.handleSuccess(quote))
         }
     }
-
 
     private fun shareQuote(author: String, quote: String) {
         emitViewEvent(
