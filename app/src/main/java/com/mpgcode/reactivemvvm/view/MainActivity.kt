@@ -23,7 +23,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun setupUI() = with(binding) {
-        quoteBtn.setOnClickListener { viewModel.emitAction(MainViewAction.QuoteButtonClick) }
+        quoteBtn.setOnClickListener { viewModel.emitAction(QuoteButtonClick) }
     }
 
     private fun listenToViewModel() {
