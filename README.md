@@ -8,18 +8,18 @@ A showcase app to demonstrate how a **reactive MVVM** approach using **Flows** c
 This MVVM implementation orchestrates the whole app functionality through the next Flows:
 
 * State = [StateFlow](https://developer.android.com/kotlin/flow/stateflow-and-sharedflow#stateflow)
-* Actions = [SharedFlow](https://developer.android.com/kotlin/flow/stateflow-and-sharedflow#sharedflow)
 * Events = [Channel](https://kotlinlang.org/docs/channels.html)
+* Actions = Not using flows anymore. However, if needed, a [SharedFlow](https://developer.android.com/kotlin/flow/stateflow-and-sharedflow#sharedflow) could be used for this use case.
 
-The app follows a unidirectional data flow paradigm like MVI but leaves out complexities such as reducers or processors.
+The app follows a Unidirectional Data Flow pattern (UDF) like MVI but leaves out complexities such as reducers or processors.
 
-![MVVM UDF](mvvm_diagram.png)
+<img src="mvvm_diagram.png" alt="MVVM UDF" width="400">
 
 ## The app - Your Daily Quote 💬
 
 The app is a simple **random Quote generator** with the ability to share the generated Quote.
 
-![Your Daily Quote app](screenshot.png)
+<img src="screenshot.png" alt="Your Daily Quote app" width="250">
 
 
 ## Third party data
