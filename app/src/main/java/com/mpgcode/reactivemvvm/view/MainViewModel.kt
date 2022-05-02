@@ -21,9 +21,9 @@ class MainViewModel(
         fetchNewQuote()
     }
 
-    fun emitAction(viewAction: MainViewAction) {
-        when (viewAction) {
-            MainViewAction.QuoteButtonClick -> fetchNewQuote()
+    fun emitAction(action: MainViewAction) {
+        when (action) {
+            QuoteButtonClick -> fetchNewQuote()
         }
     }
 
