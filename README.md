@@ -13,7 +13,7 @@ This MVVM implementation orchestrates the whole app functionality through the ne
 
 The app follows a Unidirectional Data Flow pattern (UDF) like MVI but leaves out complexities such as reducers or processors.
 
-<img src="mvvm_diagram.png" alt="MVVM UDF" width="400">
+<img src="mvvm_diagram.png" alt="MVVM UDF" width="600">
 
 ## The app - Your Daily Quote 💬
 
